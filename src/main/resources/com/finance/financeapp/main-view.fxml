@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.finance.financeapp.MainViewController"
+            fx:id="rootPane"
+            prefWidth="600"
+            prefHeight="800">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0.0"
+          AnchorPane.rightAnchor="0.0"
+          AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0">
+
+    <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Додати запис" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+        <HBox spacing="10">
+            <Label text="Тип:" />
+            <ChoiceBox fx:id="typeChoiceBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Дохід" />
+                        <String fx:value="Витрата" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Категорія:" />
+            <ComboBox fx:id="categoryComboBox" promptText="Виберіть або введіть категорію"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Дата:" />
+            <DatePicker fx:id="datePicker" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Сума:" />
+            <TextField fx:id="amountField" promptText="Наприклад: 500" />
+        </HBox>
+
+        <Button fx:id="addButton" text="Додати" onAction="#handleAddEntry" />
+
+
+        <Separator />
+
+        <Label text="Список записів:" style="-fx-font-size: 14px;" />
+
+        <TableView fx:id="transactionsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="dateColumn" text="Дата" prefWidth="100"/>
+                <TableColumn fx:id="typeColumn" text="Тип" prefWidth="100"/>
+                <TableColumn fx:id="categoryColumn" text="Категорія" prefWidth="150"/>
+                <TableColumn fx:id="amountColumn" text="Сума" prefWidth="100"/>
+                <TableColumn fx:id="actionColumn" text="Дії" prefWidth="100"/>
+            </columns>
+        </TableView>
+
+    
+
+    </VBox>
+</AnchorPane>
+
+
+
+

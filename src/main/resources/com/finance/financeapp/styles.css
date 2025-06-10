@@ -1,0 +1,86 @@
+
+/* Стилі для кнопок-іконок */
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-padding: 3 8;
+    -fx-cursor: hand;
+    -fx-font-size: 16px;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-background-radius: 15px;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.icon-button:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* Стилі для іконки редагування */
+.edit-icon {
+    -fx-text-fill: #757575; /* Сірий колір */
+    -fx-opacity: 0.8;
+}
+
+.edit-icon:hover {
+    -fx-text-fill: #424242; /* Темніший сірий при наведенні */
+    -fx-opacity: 1;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Стилі для іконки видалення */
+.delete-icon {
+    -fx-text-fill: #e57373; /* Світліший червоний */
+    -fx-opacity: 0.8;
+}
+
+.delete-icon:hover {
+    -fx-text-fill: #f44336; /* Яскравіший червоний при наведенні */
+    -fx-opacity: 1;
+    -fx-background-color: #fee8e7;
+}
+
+/* Стилі для клітинок таблиці */
+.table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 8 15 8 15;
+}
+
+/* Стилі для заголовків таблиці */
+.table-view .column-header {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #e0e0e0;
+    -fx-padding: 10px;
+}
+
+/* Стилі для рядків таблиці */
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #e0e0e0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f5f5f5;
+}
+
+/* Стилі для виділеного рядка */
+.table-row-cell:selected {
+    -fx-background-color: #e3f2fd;
+}
+
+/* Загальні стилі для таблиці */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+}
+
+/* Прибираємо рамку фокусу */
+.table-view:focused {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+}
+
+
