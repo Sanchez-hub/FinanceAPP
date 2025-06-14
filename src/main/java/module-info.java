@@ -9,8 +9,8 @@ module com.finance.financeapp {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.datatype.jsr310;
-
-
+    requires org.kordamp.ikonli.javafx;
+    requires org.kordamp.ikonli.fontawesome5;
 
     opens com.finance.financeapp to javafx.fxml;
     exports com.finance.financeapp;

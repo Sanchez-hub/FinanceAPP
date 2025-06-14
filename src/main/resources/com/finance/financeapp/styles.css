@@ -1,4 +1,3 @@
-
 /* Стилі для кнопок-іконок */
 .icon-button {
     -fx-background-color: transparent;
@@ -81,6 +80,14 @@
 .table-view:focused {
     -fx-background-color: white;
     -fx-border-color: #e0e0e0;
+}
+
+.date-picker {
+    -fx-pref-width: 120px;
+}
+
+.label {
+    -fx-padding: 0 5px;
 }
 
 

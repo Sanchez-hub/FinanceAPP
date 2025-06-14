@@ -6,10 +6,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Transaction {
+    private int id;
     private LocalDate date;
     private String type;
     private String category;
     private double amount;
+    private String description;
 
     // Порожній конструктор для Jackson
     public Transaction() {}
@@ -17,17 +19,47 @@ public class Transaction {
     // Конструктор з анотаціями Jackson
     @JsonCreator
     public Transaction(
+            @JsonProperty("id") int id,
             @JsonProperty("date") LocalDate date,
             @JsonProperty("type") String type,
             @JsonProperty("category") String category,
-            @JsonProperty("amount") double amount) {
+            @JsonProperty("amount") double amount,
+            @JsonProperty("description") String description) {
+        this.id = id;
         this.date = date;
         this.type = type;
         this.category = category;
         this.amount = amount;
+        this.description = description;
+    }
+
+    public Transaction(LocalDate date, String type, String category, double amount) {
+        this.date = date;
+        this.type = type;
+        this.category = category;
+        this.amount = amount;
+        this.description = ""; // або null, якщо description не потрібен
+    }
+
+    public Transaction(LocalDate date, String type, String category, double amount, String description) {
+        this.date = date;
+        this.type = type;
+        this.category = category;
+        this.amount = amount;
+        this.description = description;
     }
 
     // Гетери і сетери з анотаціями Jackson
+    @JsonProperty("id")
+    public int getId() {
+        return id;
+    }
+
+    @JsonProperty("id")
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @JsonProperty("date")
     public LocalDate getDate() {
         return date;
@@ -66,6 +98,16 @@ public class Transaction {
     @JsonProperty("amount")
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    @JsonProperty("description")
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty("description")
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

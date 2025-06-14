@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.finance.financeapp.EditTransactionDialogController"
+      spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <HBox spacing="10">
+        <Label text="Тип:" />
+        <ChoiceBox fx:id="typeChoiceBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Дохід" />
+                    <String fx:value="Витрата" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Категорія:" />
+        <ComboBox fx:id="categoryComboBox" promptText="Виберіть категорію"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Дата:" />
+        <DatePicker fx:id="datePicker" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Сума:" />
+        <TextField fx:id="amountField" promptText="Наприклад: 500" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="saveButton" text="Зберегти" onAction="#handleSave"/>
+        <Button fx:id="cancelButton" text="Скасувати" onAction="#handleCancel"/>
+    </HBox>
+</VBox>
