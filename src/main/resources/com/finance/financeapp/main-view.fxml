@@ -5,121 +5,162 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.finance.financeapp.MainViewController"
+            fx:controller="com.finance.financeapp.controller.MainViewController"
             fx:id="rootPane"
-            prefWidth="600"
-            prefHeight="800">
+            prefWidth="1200"
+            stylesheets="@styles.css">
 
-    <VBox spacing="10" AnchorPane.topAnchor="0.0"
-          AnchorPane.rightAnchor="0.0"
-          AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0">
+    <ScrollPane fitToWidth="true" fitToHeight="true" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" style="-fx-background: transparent; -fx-background-color: transparent;">
+        <VBox spacing="10" styleClass="root">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
 
-    <padding>
-            <Insets top="20" right="20" bottom="20" left="20"/>
-        </padding>
+            <Label text="Додати запис" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
 
-        <Label text="Додати запис" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <HBox spacing="10">
+                <Label text="Тип:" />
+                <ChoiceBox styleClass="custom-choicebox" fx:id="typeChoiceBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Дохід" />
+                            <String fx:value="Витрата" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </HBox>
 
-        <HBox spacing="10">
-            <Label text="Тип:" />
-            <ChoiceBox fx:id="typeChoiceBox">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Категорія:" />
+                <ComboBox fx:id="categoryComboBox" styleClass="custom-combobox" prefHeight="36" minHeight="36" maxHeight="36" />
+                <Button fx:id="addCategoryButton" text="+" styleClass="add-category-button" minWidth="36" minHeight="36" maxWidth="36" maxHeight="36"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Дата:" />
+                <DatePicker fx:id="datePicker" styleClass="custom-datepicker" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Сума:" />
+                <TextField fx:id="amountField" promptText="Наприклад: 500" />
+            </HBox>
+
+            <Button fx:id="addButton" text="Додати" onAction="#handleAddEntry" />
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Місячний бюджет:" />
+                <TextField fx:id="budgetField" promptText="Введіть суму"/>
+                <Button fx:id="setBudgetButton" text="Встановити бюджет" onAction="#handleSetBudget"/>
+            </HBox>
+
+            <Separator />
+
+            <Label text="Фільтрувати записи:" styleClass="filter-label"/>
+            <HBox spacing="10">
+                <Label text="Тип запису:" />
+                <ComboBox fx:id="filterTypeComboBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Всі" />
+                            <String fx:value="Дохід" />
+                            <String fx:value="Витрата" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label text="Категорія:" />
+                <ComboBox fx:id="filterCategoryComboBox" promptText="Всі категорії"/>
+                <Label text="Пошук:" />
+                <TextField fx:id="searchField" promptText="Введіть текст"/>
+            </HBox>
+
+            <!-- Двоколонковий layout для таблиці та аналітики -->
+            <HBox spacing="40" alignment="TOP_LEFT">
+                <!-- Table Section -->
+                <VBox spacing="10" styleClass="records-card" maxWidth="900" prefWidth="700">
+                    <Label text="Список записів:" styleClass="section-title" />
+                    <TableView fx:id="transactionsTable" prefWidth="850" maxWidth="900" prefHeight="400" maxHeight="400" VBox.vgrow="NEVER">
+                        <columns>
+                            <TableColumn fx:id="dateColumn" text="Дата" prefWidth="120" maxWidth="140" />
+                            <TableColumn fx:id="typeColumn" text="Тип" prefWidth="100" maxWidth="120" minWidth="80" />
+                            <TableColumn fx:id="categoryColumn" text="Категорія" prefWidth="180" maxWidth="220" />
+                            <TableColumn fx:id="amountColumn" text="Сума" prefWidth="100" maxWidth="120" />
+                            <TableColumn fx:id="actionColumn" text="Дії" prefWidth="60" maxWidth="70" />
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+                <!-- Analytics Section -->
+                <VBox spacing="24" styleClass="analytics-card" prefWidth="380" maxWidth="420">
+                    <Label text="Аналітика" styleClass="analytics-title" />
+                    <VBox spacing="18">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Label text="Витрати за категоріями" styleClass="chart-title" />
+                        <PieChart fx:id="expensePieChart" />
+                        <Label text="Динаміка витрат" styleClass="chart-title" />
+                        <LineChart fx:id="expenseLineChart">
+                            <xAxis>
+                                <CategoryAxis label="Дата"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Сума витрат"/>
+                            </yAxis>
+                        </LineChart>
+                    </VBox>
+                    <Button fx:id="resetFilterButton" text="Скинути фільтр" visible="false" onAction="#handleResetFilter" styleClass="button"/>
+                </VBox>
+            </HBox>
+
+            <!-- СЕКЦІЯ ВИБОРУ ПЕРІОДУ: завжди під таблицею/аналітикою -->
+            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="period-filter-section">
+                <Label text="Період:"/>
+                <DatePicker fx:id="startDatePicker" promptText="Від" styleClass="custom-datepicker" />
+                <Label text="—"/>
+                <DatePicker fx:id="endDatePicker" promptText="До" styleClass="custom-datepicker" />
+                <Button text="Застосувати" onAction="#handleApplyDateRange" styleClass="button primary-button" />
+                <Button text="Скинути" onAction="#handleResetDateRange" styleClass="button" />
+            </HBox>
+
+            <!-- Підсумкові лейбли -->
+            <HBox spacing="20" styleClass="summary-section">
+                <Label fx:id="incomeLabel" text="Дохід: 0 грн"/>
+                <Label fx:id="expenseLabel" text="Витрати: 0 грн"/>
+                <Label fx:id="balanceLabel" text="Баланс: 0 грн"/>
+                <Label fx:id="budgetLabel" text="Бюджет: 0 грн"/>
+            </HBox>
+
+            <!-- Вибір періоду (комбобокс) -->
+            <ComboBox fx:id="periodComboBox" promptText="Виберіть період" styleClass="custom-combobox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Дохід" />
-                        <String fx:value="Витрата" />
-                    </FXCollections>
-                </items>
-            </ChoiceBox>
-        </HBox>
-
-        <HBox spacing="10">
-            <Label text="Категорія:" />
-            <ComboBox fx:id="categoryComboBox" promptText="Виберіть або введіть категорію"/>
-            <Button fx:id="addCategoryButton" text="➕" />
-        </HBox>
-
-        <HBox spacing="10">
-            <Label text="Дата:" />
-            <DatePicker fx:id="datePicker" />
-        </HBox>
-
-        <HBox spacing="10">
-            <Label text="Сума:" />
-            <TextField fx:id="amountField" promptText="Наприклад: 500" />
-        </HBox>
-
-        <Button fx:id="addButton" text="Додати" onAction="#handleAddEntry" />
-
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label text="Місячний бюджет:" />
-            <TextField fx:id="budgetField" promptText="Введіть суму"/>
-            <Button fx:id="setBudgetButton" text="Встановити бюджет" onAction="#handleSetBudget"/>
-        </HBox>
-
-        <Separator />
-
-        <Label text="Список записів:" style="-fx-font-size: 14px;" />
-
-        <HBox spacing="10">
-            <Label text="Тип запису:" />
-            <ComboBox fx:id="filterTypeComboBox">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Всі" />
-                        <String fx:value="Дохід" />
-                        <String fx:value="Витрата" />
+                        <String fx:value="Сьогодні" />
+                        <String fx:value="Цей місяць" />
+                        <String fx:value="Інший місяць" />
+                        <String fx:value="Весь час" />
+                        <String fx:value="Власний період" />
                     </FXCollections>
                 </items>
             </ComboBox>
-            <Label text="Категорія:" />
-            <ComboBox fx:id="filterCategoryComboBox" promptText="Всі категорії"/>
-            <Label text="Пошук:" />
-            <TextField fx:id="searchField" promptText="Введіть текст"/>
-        </HBox>
 
-        <TableView fx:id="transactionsTable" VBox.vgrow="ALWAYS">
-            <columns>
-                <TableColumn fx:id="dateColumn" text="Дата" prefWidth="100"/>
-                <TableColumn fx:id="typeColumn" text="Тип" prefWidth="100"/>
-                <TableColumn fx:id="categoryColumn" text="Категорія" prefWidth="150"/>
-                <TableColumn fx:id="amountColumn" text="Сума" prefWidth="100"/>
-                <TableColumn fx:id="actionColumn" text="Дії" prefWidth="100"/>
-            </columns>
-        </TableView>
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label text="Період:"/>
-            <DatePicker fx:id="startDatePicker" promptText="Від"/>
-            <Label text="—"/>
-            <DatePicker fx:id="endDatePicker" promptText="До"/>
-            <Button text="Застосувати" onAction="#handleApplyDateRange"/>
-            <Button text="Скинути" onAction="#handleResetDateRange"/>
-        </HBox>
-        <HBox spacing="20">
-            <Label fx:id="incomeLabel" text="Дохід: 0 грн"/>
-            <Label fx:id="expenseLabel" text="Витрати: 0 грн"/>
-            <Label fx:id="balanceLabel" text="Баланс: 0 грн"/>
-            <Label fx:id="budgetLabel" text="Бюджет: 0 грн"/>
-        </HBox>
+            <ImageView fitWidth="24" fitHeight="24">
+                <image>
+                    <Image url="@icons/arrow-down.png"/>
+                </image>
+            </ImageView>
 
-        <ComboBox fx:id="periodComboBox" promptText="Виберіть період">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Сьогодні" />
-                    <String fx:value="Цей місяць" />
-                    <String fx:value="Інший місяць" />
-                    <String fx:value="Весь час" />
-                    <String fx:value="Власний період" />
-                </FXCollections>
-            </items>
-        </ComboBox>
-
-    </VBox>
+        </VBox>
+    </ScrollPane>
 </AnchorPane>
-
-
-
-

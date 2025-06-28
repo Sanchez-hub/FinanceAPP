@@ -1,4 +1,4 @@
-package com.finance.financeapp;
+package com.finance.financeapp.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

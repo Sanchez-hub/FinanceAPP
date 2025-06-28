@@ -1,93 +1,1047 @@
+/* Основний фон для всього вікна */
+.root {
+    -fx-background-color: #2A3441;
+}
+
+/* Загальні стилі для всіх кнопок */
+.button {
+    -fx-background-color: #00AF66;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #009955;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 3);
+}
+
+.button:pressed {
+    -fx-background-color: #008844;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}
+
 /* Стилі для кнопок-іконок */
 .icon-button {
     -fx-background-color: transparent;
-    -fx-padding: 3 8;
+    -fx-border-color: transparent;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
+    -fx-padding: 0;
+    -fx-alignment: center;
     -fx-cursor: hand;
+    -fx-effect: none;
     -fx-font-size: 16px;
-    -fx-min-width: 30px;
-    -fx-min-height: 30px;
-    -fx-background-radius: 15px;
-    -fx-transition: all 0.2s ease-in-out;
 }
 
-.icon-button:hover {
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-}
-
-/* Стилі для іконки редагування */
 .edit-icon {
-    -fx-text-fill: #757575; /* Сірий колір */
-    -fx-opacity: 0.8;
+    -fx-text-fill: #00AF66;
+    -fx-opacity: 0.85;
 }
 
 .edit-icon:hover {
-    -fx-text-fill: #424242; /* Темніший сірий при наведенні */
+    -fx-text-fill: #009955;
     -fx-opacity: 1;
-    -fx-background-color: #f5f5f5;
+    -fx-background-color: rgba(0,175,102,0.08);
 }
 
-/* Стилі для іконки видалення */
 .delete-icon {
-    -fx-text-fill: #e57373; /* Світліший червоний */
-    -fx-opacity: 0.8;
+    -fx-text-fill: #F44336;
+    -fx-opacity: 0.85;
 }
 
 .delete-icon:hover {
-    -fx-text-fill: #f44336; /* Яскравіший червоний при наведенні */
+    -fx-text-fill: #D32F2F;
     -fx-opacity: 1;
-    -fx-background-color: #fee8e7;
+    -fx-background-color: rgba(244,67,54,0.08);
 }
 
 /* Стилі для клітинок таблиці */
-.table-cell {
-    -fx-alignment: CENTER;
-    -fx-padding: 8 15 8 15;
+.table-cell, .table-row-cell {
+    -fx-background-color: #232b36 !important;
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 0 0 0 !important;
+    -fx-text-fill: #fff !important;
 }
 
 /* Стилі для заголовків таблиці */
 .table-view .column-header {
-    -fx-background-color: #f5f5f5;
-    -fx-border-color: #e0e0e0;
-    -fx-padding: 10px;
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+    -fx-padding: 12px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #ffffff;
 }
 
 /* Стилі для рядків таблиці */
 .table-row-cell {
-    -fx-background-color: white;
-    -fx-border-color: transparent transparent #e0e0e0 transparent;
+    -fx-border-color: transparent transparent #3a4451 transparent;
     -fx-border-width: 0 0 1 0;
+    -fx-transition: all 0.2s ease;
 }
 
 .table-row-cell:hover {
-    -fx-background-color: #f5f5f5;
+    -fx-background-color: #3a4451;
 }
 
 /* Стилі для виділеного рядка */
 .table-row-cell:selected {
-    -fx-background-color: #e3f2fd;
+    -fx-background-color: #00AF66 !important;
 }
 
 /* Загальні стилі для таблиці */
 .table-view {
-    -fx-background-color: white;
-    -fx-border-color: #e0e0e0;
+    -fx-background-color: #1b232e;
+    -fx-border-color: #3a4451;
     -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+/* Стилі для DatePicker */
+.date-picker {
+    -fx-background-color: #2a3441;
+}
+
+.date-picker > .text-field {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-image: url('icons/calendar-icon.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 16px 16px;
+    -fx-padding: 0;
+    -fx-min-width: 24px;
+    -fx-max-width: 24px;
+    -fx-pref-width: 24px;
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-shape: "";
+}
+
+.date-picker .text-field {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup {
+    -fx-background-color: #2a3441;
+}
+
+.date-picker-popup > * > .spinner > .button {
+    -fx-background-color: #3a4451;
+}
+
+.date-picker-popup > * > .spinner > .button:hover {
+    -fx-background-color: #4a5461;
+}
+
+.date-picker-popup > * > .spinner > .button > .left-arrow,
+.date-picker-popup > * > .spinner > .button > .right-arrow {
+    -fx-background-color: white;
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: #2a3441;
+}
+
+.date-picker-popup > * > .week-number-cell {
+    -fx-text-fill: white;
+}
+
+.date-picker-popup > * > .day-cell {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup > * > .day-cell:hover {
+    -fx-background-color: #3a4451;
+}
+
+.date-picker-popup > * > .selected {
+    -fx-background-color: #00AF66;
+}
+
+.date-picker-popup > * > .today {
+    -fx-background-color: #4a5461;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #2a3441;
+}
+
+.date-picker-popup .calendar-grid {
+    -fx-background-color: #2a3441;
+}
+
+.date-picker .text-field {
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px;
+    -fx-text-fill: white;
+}
+
+/* Заміна іконки календаря у DatePicker */
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow {
+    -fx-shape: null;
+    -fx-background-image: none;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Стилі для Label */
+.label {
+    -fx-padding: 0 5px;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #ffffff;
+}
+
+/* Стилі для ComboBox */
+.combo-box {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+    -fx-pref-width: 150px;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+}
+
+/* Стилі для кнопки зі стрілкою */
+.combo-box .arrow-button {
+    -fx-alignment: center;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+}
+
+/* Заміна стандартної стрілки на власну іконку */
+.combo-box .arrow {
+    -fx-shape: "";
+    -fx-background-image: url("icons/arrow-down.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 16px 16px;
+    -fx-min-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-width: 24px;
+    -fx-max-height: 24px;
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-padding: 0;
+}
+
+/* Стилі для ховер-ефекту */
+.combo-box:hover {
+    -fx-border-color: #00AF66;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 4 8 4 8;
+}
+
+/* Стилі для TextField */
+.text-field {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+    -fx-border-color: #3a4451;
     -fx-border-radius: 4px;
 }
 
-/* Прибираємо рамку фокусу */
-.table-view:focused {
-    -fx-background-color: white;
-    -fx-border-color: #e0e0e0;
+.text-field:hover {
+    -fx-border-color: #00AF66;
 }
 
+/* Стилі для заголовків */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+/* Стилі для підзаголовків */
+.subtitle-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+/* Стилі для графіків */
+.chart {
+    -fx-background-color: #2a3441;
+    -fx-padding: 10px;
+    -fx-background-radius: 4px;
+    -fx-border-color: #3a4451;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 6px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 16, 0.3, 0, 4);
+}
+
+.chart-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+/* Стилі для діалогових вікон */
+.dialog-pane {
+    -fx-background-color: #2a3441;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 5);
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #00AF66;
+    -fx-background-radius: 8px 8px 0 0;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: #ffffff;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: #00AF66;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #009955;
+}
+
+.dialog-pane .button-bar .button:pressed {
+    -fx-background-color: #008844;
+}
+
+/* Стилі для текстових полів у діалогах */
+.dialog-pane .text-field {
+    -fx-background-color: #1b232e;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px;
+}
+
+/* --- Темна тема для ComboBox --- */
+.combo-box-popup .list-view {
+    -fx-background-color: #232b36;
+    -fx-border-color: #3a4451;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #232b36;
+    -fx-text-fill: #fff;
+}
+
+.combo-box-popup .list-cell:hover,
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #00AF66;
+    -fx-text-fill: #fff;
+}
+
+/* --- Темна тема для DatePicker --- */
+.date-picker-popup .month-year-pane,
+.date-picker-popup .calendar-grid {
+    -fx-background-color: #2a3441;
+}
+
+.date-picker-popup .cell {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: #ffffff;
+}
+
+.date-picker-popup .cell:hover,
+.date-picker-popup .cell:selected {
+    -fx-background-color: #00AF66;
+    -fx-text-fill: #ffffff;
+}
+
+/* Базові стилі для всіх ComboBox */
+
+/* Стилі для типу */
+#typeComboBox {
+    -fx-background-color: #2a3441;
+}
+
+#typeComboBox .list-cell {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+}
+
+/* Стилі для дати */
 .date-picker {
-    -fx-pref-width: 120px;
+    -fx-background-color: #2a3441;
 }
 
-.label {
-    -fx-padding: 0 5px;
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
 }
 
+.date-picker .text-field {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+}
 
+.date-picker-popup {
+    -fx-background-color: #2a3441;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #2a3441;
+}
+
+.date-picker-popup .calendar-grid {
+    -fx-background-color: #2a3441;
+}
+
+/* Додаткові стилі для виділення у комбобоксах */
+.combo-box-popup .list-view {
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #3a4451;
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #00AF66;
+}
+
+/* Загальні стилі для всіх combo-box */
+.combo-box {
+    -fx-background-color: #2a3441;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 4 8 4 8;
+}
+
+.combo-box .arrow-button {
+    -fx-alignment: center;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+}
+
+/* Додатковий стиль для текстового поля */
+.text-input {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+}
+
+/* Виділена клітинка */
+.table-cell:selected, .table-row-cell:selected .table-cell {
+    -fx-background-color: #00AF66 !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+/* Сфокусована клітинка */
+.table-cell:focused, .table-row-cell:focused .table-cell {
+    -fx-background-color: #2a3441; /* або #1b232e для темного фону */
+    -fx-text-fill: #ffffff;
+}
+
+/* Виділений рядок */
+.table-row-cell:selected, .table-row-cell:focused:selected {
+    -fx-background-color: #00AF66 !important;
+}
+
+/* Виділена клітинка */
+.table-cell:selected, .table-row-cell:selected .table-cell, .table-cell:focused:selected {
+    -fx-background-color: #00AF66 !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+/* Сфокусована клітинка, яка не виділена */
+.table-cell:focused, .table-row-cell:focused .table-cell {
+    -fx-background-color: #2a3441 !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+/* Виділений текст у TableView */
+.table-view .table-row-cell:selected .text {
+    -fx-fill: #ffffff !important;
+}
+
+/* Виділений рядок (будь-який стан) */
+.table-row-cell:selected,
+.table-row-cell:focused:selected,
+.table-row-cell:filled:selected,
+.table-row-cell:filled:focused:selected,
+.table-row-cell:even:selected,
+.table-row-cell:odd:selected {
+    -fx-background-color: #009955 !important;
+}
+
+/* Виділена клітинка (будь-який стан) */
+.table-cell:selected,
+.table-row-cell:selected .table-cell,
+.table-cell:focused:selected,
+.table-row-cell:focused:selected .table-cell,
+.table-row-cell:filled:selected .table-cell,
+.table-row-cell:even:selected .table-cell,
+.table-row-cell:odd:selected .table-cell {
+    -fx-background-color: #009955 !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+/* Сфокусована клітинка, яка не виділена */
+.table-cell:focused,
+.table-row-cell:focused .table-cell {
+    -fx-background-color: #2a3441 !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+/* Виділений текст у TableView */
+.table-view .table-row-cell:selected .text {
+    -fx-fill: #ffffff !important;
+}
+
+.choice-box {
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+}
+
+.choice-box:focused {
+    -fx-border-color: #00AF66;
+}
+
+.choice-box .label {
+    -fx-text-fill: #ffffff;
+}
+
+.choice-box .arrow-button {
+    -fx-alignment: center;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #2a3441;
+}
+
+.choice-box .menu-item {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: #ffffff;
+}
+
+.choice-box .menu-item:focused,
+.choice-box .menu-item:armed,
+.choice-box .menu-item:selected {
+    -fx-background-color: #00AF66;
+    -fx-text-fill: #ffffff;
+}
+
+/* Сучасний вигляд для ComboBox */
+.custom-combobox {
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-pref-width: 220px;
+    -fx-pref-height: 36px;
+    -fx-min-height: 36px;
+    -fx-max-height: 36px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+    -fx-padding: 0 32 0 10; /* 32px справа під стрілку */
+}
+.custom-combobox .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-image: url('icons/arrow-down.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 18px 18px;
+    -fx-min-width: 32px;
+    -fx-max-width: 32px;
+    -fx-pref-width: 32px;
+    -fx-alignment: center-right;
+    -fx-padding: 0;
+}
+.custom-combobox .arrow {
+    -fx-shape: null;
+    -fx-background-color: transparent;
+}
+.custom-combobox .list-cell {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-padding: 6 10;
+}
+
+/* Стилі для періодів */
+#periodComboBox .list-cell,
+#typeComboBox .list-cell,
+#categoryComboBox .list-cell {
+    -fx-text-fill: white;
+}
+
+/* Додатково для впевненості */
+.combo-box-base:focused {
+    -fx-background-color: #2a3441;
+}
+
+.combo-box-base:focused > .list-cell {
+    -fx-text-fill: white;
+}
+/* Стилі для таблиці */
+.table-view {
+    -fx-background-color: #2a3441;
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #2a3441;
+}
+
+.table-view .column-header .label {
+    -fx-padding: 0 12px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+}
+
+.table-view .table-cell {
+    -fx-padding: 0 12px;
+    -fx-alignment: center-left;
+}
+
+/* Стилі для рядків таблиці */
+.table-row-cell {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+}
+
+/* Стилі для вибраного рядка */
+.table-row-cell:selected {
+    -fx-background-color: #00AF66;
+    -fx-text-fill: white;
+}
+
+/* Стилі для комірок таблиці */
+.table-cell {
+    -fx-background-color: #2a3441;
+    -fx-text-fill: white;
+    -fx-border-color: #3a4451 transparent transparent #3a4451;
+    -fx-border-width: 0 1px 0 0;
+}
+
+/* Специфічні стилі для колонки з датою */
+.table-column.date-column {
+    -fx-background-color: #2a3441;
+}
+
+.table-cell:selected {
+    -fx-background-color: #00AF66;
+}
+
+/* Прибираємо фокусне виділення */
+.table-row-cell:focused {
+    -fx-background-color: #2a3441;
+}
+
+.table-view:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Стилі для чергування рядків */
+.table-row-cell:odd {
+    -fx-background-color: #2a3441;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #2a3441;
+}
+
+/* Стилі для наведення мишкою */
+.table-row-cell:hover {
+    -fx-background-color: #3a4451;
+}
+/* Загальні стилі для ComboBox */
+.combo-box {
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 4px;
+}
+
+/* Контейнер для стрілки ComboBox */
+.combo-box .arrow-button {
+    -fx-alignment: center;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+}
+
+/* Приховуємо стандартну стрілку в ComboBox */
+.combo-box .arrow-button .arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-shape: "";
+}
+
+/* Контейнер для тексту в ComboBox */
+.combo-box > .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 4px 8px 4px 8px;
+    -fx-alignment: center-left;
+}
+
+/* Стилі для DatePicker */
+.date-picker {
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 4px;
+    -fx-pref-height: 32px;
+    -fx-min-height: 32px;
+    -fx-max-height: 32px;
+}
+
+/* Контейнер для кнопки календаря */
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-image: url('icons/calendar-icon.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 16px 16px;
+    -fx-min-width: 32px;
+    -fx-max-width: 32px;
+    -fx-pref-width: 32px;
+    -fx-padding: 0;
+}
+
+/* Приховуємо стандартну стрілку в DatePicker */
+.date-picker .arrow-button .arrow {
+    -fx-shape: null;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Текстове поле в DatePicker */
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 4px 8px 4px 8px;
+}
+
+/* Загальні стилі для наведення */
+.combo-box:hover,
+.date-picker:hover {
+    -fx-border-color: #00AF66;
+}
+
+/* Фіксований розмір для компонентів */
+.combo-box,
+.date-picker {
+    -fx-pref-height: 32px;
+    -fx-min-height: 32px;
+    -fx-max-height: 32px;
+}
+
+/* Розділення тексту та кнопки зі стрілкою */
+.combo-box > .list-cell,
+.date-picker > .text-field {
+    -fx-background-insets: 0;
+    -fx-border-width: 0;
+}
+
+/* Контейнер стрілки - чітке позиціонування */
+.combo-box .arrow-button,
+.date-picker .arrow-button {
+    -fx-background-insets: 0;
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+}
+/* Загальні стилі для всіх полів введення */
+.combo-box,
+.date-picker,
+.text-field {
+    -fx-background-color: #2A3441;
+}
+
+/* Кастомний ChoiceBox зі стрілкою (як у Категорія) */
+.custom-choicebox {
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 4px;
+    -fx-padding: 0;
+    -fx-pref-width: 150px;
+}
+
+.custom-choicebox:hover {
+    -fx-border-color: #00AF66;
+}
+
+.custom-choicebox .label {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-padding: 4 32 4 10; /* 32px справа під стрілку */
+}
+
+.custom-choicebox .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-alignment: center;
+    -fx-padding: 0;
+    -fx-min-width: 24px;
+    -fx-max-width: 24px;
+    -fx-pref-width: 24px;
+}
+
+.custom-choicebox .arrow {
+    -fx-shape: null;
+    -fx-background-image: url('icons/arrow-down.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 16px 16px;
+    -fx-min-width: 24px;
+    -fx-max-width: 24px;
+    -fx-pref-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-height: 24px;
+    -fx-pref-height: 24px;
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-padding: 0;
+}
+
+/* Кастомний DatePicker з іконкою календаря */
+.custom-datepicker {
+    -fx-background-color: #2a3441;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 4px;
+    -fx-pref-width: 160px;
+}
+
+.custom-datepicker:hover {
+    -fx-border-color: #00AF66;
+}
+
+.custom-datepicker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 4 32 4 10;
+    -fx-font-size: 13px;
+}
+
+.custom-datepicker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-image: url('icons/calendar-icon.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 18px 18px;
+    -fx-min-width: 32px;
+    -fx-max-width: 32px;
+    -fx-pref-width: 32px;
+    -fx-alignment: center-right;
+    -fx-padding: 0 6px 0 0;
+}
+
+.custom-datepicker .arrow {
+    -fx-shape: null;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* ====== COMMON BASE STYLES ====== */
+.combo-base, .choice-box, .date-picker {
+    -fx-background-color: #2a3
+}
+
+/* --- MODERNIZED INPUT FIELDS --- */
+.text-field, .combo-box, .custom-combobox, .choice-box, .date-picker, .custom-datepicker {
+    -fx-background-color: #232b36;
+    -fx-border-color: #3a4451;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-font-size: 15px;
+    -fx-text-fill: #fff;
+    -fx-pref-height: 38px;
+    -fx-min-height: 38px;
+    -fx-max-height: 38px;
+    -fx-padding: 0 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 2, 0, 0, 1);
+}
+.text-field:focused, .combo-box:focused, .custom-combobox:focused, .choice-box:focused, .date-picker:focused, .custom-datepicker:focused {
+    -fx-border-color: #00AF66;
+}
+
+/* Remove green backgrounds from input fields */
+.text-field, .combo-box, .custom-combobox, .choice-box, .date-picker, .custom-datepicker {
+    -fx-background-color: #232b36;
+}
+
+/* --- ANALYTICS CARD --- */
+.analytics-card {
+    -fx-background-color: #232b36;
+    -fx-background-radius: 16px;
+    -fx-padding: 28px 24px 28px 24px;
+    -fx-spacing: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.13), 18, 0.18, 0, 4);
+    -fx-border-color: #2e3a4a;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 16px;
+    -fx-min-width: 320px;
+    -fx-max-width: 420px;
+}
+.analytics-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00AF66;
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 14 0;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-effect: dropshadow(gaussian, #00AF66, 2, 0.2, 0, 1);
+}
+.chart-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 12 0 8 0;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* --- PERIOD FILTER SECTION --- */
+.period-filter-section, .period-filter-hbox {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 0;
+    -fx-spacing: 10px;
+    -fx-alignment: center-left;
+    -fx-min-height: 38px;
+}
+
+/* --- TABLE --- */
+.table-view {
+    -fx-background-color: #232b36;
+    -fx-border-color: #3a4451;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+}
+.table-view .column-header {
+    -fx-background-color: #232b36;
+    -fx-border-color: #3a4451;
+    -fx-padding: 12px;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+}
+.table-row-cell {
+    -fx-background-color: #232b36;
+    -fx-text-fill: #fff;
+    -fx-border-color: transparent transparent #2e3a4a transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.table-row-cell:hover {
+    -fx-background-color: #2e3a4a;
+}
+.table-row-cell:selected {
+    -fx-background-color: #00AF66 !important;
+    -fx-text-fill: #fff;
+}
+
+.records-card {
+    -fx-background-color: #232b36;
+    -fx-background-radius: 16px;
+    -fx-padding: 28px 24px 28px 24px;
+    -fx-spacing: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.13), 18, 0.18, 0, 4);
+    -fx-border-color: #2e3a4a;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 16px;
+    -fx-min-width: 320px;
+    -fx-max-width: 900px;
+}
+.section-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00AF66;
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 14 0;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-effect: dropshadow(gaussian, #00AF66, 2, 0.2, 0, 1);
+}
+.period-filter-section {
+    -fx-background-color: transparent;
+    -fx-padding: 18 0 8 0;
+    -fx-spacing: 10px;
+    -fx-alignment: center-left;
+    -fx-min-height: 38px;
+    -fx-max-width: 1000px;
+    -fx-margin-bottom: 18px;
+}
+
+.summary-section {
+    -fx-padding: 12 0 0 0;
+    -fx-spacing: 20px;
+}
+
+#periodComboBox {
+    -fx-margin-top: 18px;
+}
+
+/* PieChart label styles for dark background */
+.chart-pie-label {
+    -fx-fill: #fff !important;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #232b36, 2, 0.2, 0, 1);
+}
+
+.add-category-button {
+    -fx-background-color: #00AF66;
+    -fx-text-fill: #fff;
+    -fx-font-size: 22px;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-min-width: 36px;
+    -fx-min-height: 36px;
+    -fx-max-width: 36px;
+    -fx-max-height: 36px;
+    -fx-alignment: center;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,175,102,0.18), 6, 0, 0, 1);
+    -fx-border-color: transparent;
+}
+.add-category-button:hover {
+    -fx-background-color: #009955;
+}

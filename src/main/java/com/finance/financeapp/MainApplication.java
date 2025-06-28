@@ -1,42 +1,60 @@
 package com.finance.financeapp;
 
+import com.finance.financeapp.database.DatabaseHelper;
+import com.finance.financeapp.model.Category;
+import com.finance.financeapp.service.CategoryService;
+import com.finance.financeapp.service.TransactionService;
+import com.finance.financeapp.dao.CategoryDAO;
+import com.finance.financeapp.dao.TransactionDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.net.URL;
+import com.finance.financeapp.controller.MainViewController;
+import javafx.scene.control.TableView;
 
 public class MainApplication extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
-        try {
-            // Ініціалізуємо базу даних
-            DatabaseHelper.initializeDatabase();
-            System.out.println("Database initialized successfully");
-            
-            // Залишок коду без змін...
-            URL fxmlUrl = getClass().getResource("/com/finance/financeapp/main-view.fxml");
-            if (fxmlUrl == null) {
-                System.err.println("Cannot find main-view.fxml");
-                System.err.println("Current directory: " + System.getProperty("user.dir"));
-                throw new RuntimeException("Cannot find main-view.fxml");
+    public void start(Stage primaryStage) throws Exception {
+        DatabaseHelper.initializeDatabase();
+
+        DatabaseHelper dbHelper = new DatabaseHelper();
+        TransactionService transactionService = new TransactionService(new TransactionDAO(dbHelper));
+        CategoryService categoryService = new CategoryService(new CategoryDAO());
+
+        categoryService.initializeDefaultCategories();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/finance/financeapp/main-view.fxml"));
+        loader.setControllerFactory(param -> {
+            if (param == MainViewController.class) {
+                return new MainViewController(transactionService, categoryService);
             }
-            System.out.println("Found FXML at: " + fxmlUrl);
-            
-            FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Finance App");
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            System.err.println("Error during application start: " + e.getMessage());
-            e.printStackTrace();
-            throw e;
-        }
+            // Add other controllers as needed
+            try {
+                return param.getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        Scene scene = new Scene(loader.load());
+        scene.getStylesheets().add(getClass().getResource("/com/finance/financeapp/styles.css").toExternalForm());
+        primaryStage.setScene(scene);
+        // primaryStage.setResizable(false);
+        primaryStage.setMinHeight(900);
+        primaryStage.setMinWidth(1200);
+        primaryStage.setTitle("Finance App");
+        primaryStage.setMaximized(true);
+        primaryStage.getIcons().add(
+            new javafx.scene.image.Image(getClass().getResourceAsStream("/com/finance/financeapp/icons/main-icon.png"))
+        );
+        primaryStage.show();
+
+        //transactionsTable.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
-

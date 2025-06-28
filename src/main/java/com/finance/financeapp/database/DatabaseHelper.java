@@ -1,4 +1,4 @@
-package com.finance.financeapp;
+package com.finance.financeapp.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,39 +10,38 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
+import com.finance.financeapp.model.Transaction;
 
 public class DatabaseHelper {
-    private static final String DB_NAME = "new_finance.db";
-    private static final String DB_URL = "jdbc:sqlite:" + DB_NAME;
+    private static final String DB_URL = "jdbc:sqlite:financeapp.db";
+
+    public static Connection connect() throws SQLException {
+        return DriverManager.getConnection(DB_URL);
+    }
+
+    public static Connection getConnection() throws SQLException {
+        String url = "jdbc:sqlite:financeapp.db";
+        return DriverManager.getConnection(url);
+    }
 
     public static void initializeDatabase() {
         try {
             // Перевіряємо чи існує файл БД
-            File dbFile = new File(DB_NAME);
+            File dbFile = new File(DB_URL.substring(DB_URL.lastIndexOf(":") + 1));
             boolean isNewDatabase = !dbFile.exists();
 
             // Створюємо підключення до БД
             try (Connection conn = connect()) {
                 if (isNewDatabase) {
-                    System.out.println("Creating new database: " + DB_NAME);
+                    System.out.println("Creating new database: " + DB_URL);
                     createTables(conn);
                 } else {
-                    System.out.println("Using existing database: " + DB_NAME);
+                    System.out.println("Using existing database: " + DB_URL);
                 }
             }
         } catch (SQLException e) {
             System.err.println("Database initialization error: " + e.getMessage());
             e.printStackTrace();
-        }
-    }
-
-    public static Connection connect() throws SQLException {
-        try {
-            // Завантажуємо драйвер SQLite
-            Class.forName("org.sqlite.JDBC");
-            return DriverManager.getConnection(DB_URL);
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("SQLite JDBC driver not found", e);
         }
     }
 
