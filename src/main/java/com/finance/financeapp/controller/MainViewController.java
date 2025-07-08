@@ -421,7 +421,7 @@ public class MainViewController {
 
 
         typeChoiceBox.setItems(FXCollections.observableArrayList("Дохід", "Витрата"));
-        categoryComboBox.setEditable(true);
+        categoryComboBox.setEditable(false);
 
         addButton.setText("Додати");
 

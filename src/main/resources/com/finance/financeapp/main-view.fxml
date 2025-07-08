@@ -109,9 +109,9 @@
                             <Insets top="20" right="20" bottom="20" left="20"/>
                         </padding>
                         <Label text="Витрати за категоріями" styleClass="chart-title" />
-                        <PieChart fx:id="expensePieChart" />
+                        <PieChart fx:id="expensePieChart" prefWidth="400" prefHeight="260"/>
                         <Label text="Динаміка витрат" styleClass="chart-title" />
-                        <LineChart fx:id="expenseLineChart">
+                        <LineChart fx:id="expenseLineChart" prefWidth="400" prefHeight="260">
                             <xAxis>
                                 <CategoryAxis label="Дата"/>
                             </xAxis>
