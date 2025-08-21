@@ -12,8 +12,6 @@
     <list default="true" id="bde22acd-894b-45b1-bfb2-97e8072987d6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/financeapp.db" beforeDir="false" afterPath="$PROJECT_DIR$/financeapp.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/finance/financeapp/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/finance/financeapp/controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/finance/financeapp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/finance/financeapp/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

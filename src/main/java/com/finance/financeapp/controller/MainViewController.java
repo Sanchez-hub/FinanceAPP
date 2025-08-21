@@ -383,7 +383,7 @@ public class MainViewController {
                 } else if (startDatePicker.getValue() != null && endDatePicker.getValue() != null
                         && !item.isBefore(startDatePicker.getValue()) && !item.isAfter(endDatePicker.getValue())) {
                     setText(item.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-                    setStyle("-fx-background-color: #e3f2fd; -fx-text-fill: #232b36;");
+                    setStyle("-fx-background-color: #232b36; -fx-text-fill: #fff;");
                 } else {
                     setText(item.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
                     setStyle("-fx-background-color: #232b36; -fx-text-fill: #fff;");

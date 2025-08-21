@@ -858,26 +858,35 @@
 .custom-datepicker .text-field {
     -fx-background-color: transparent;
     -fx-text-fill: white;
-    -fx-padding: 4 32 4 10;
+    -fx-padding: 4 48 4 10; /* extra space on right for larger icon area */
     -fx-font-size: 13px;
 }
 
 .custom-datepicker .arrow-button {
     -fx-background-color: transparent;
-    -fx-background-image: url('icons/calendar-icon.png');
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-background-size: 18px 18px;
-    -fx-min-width: 32px;
-    -fx-max-width: 32px;
-    -fx-pref-width: 32px;
-    -fx-alignment: center-right;
-    -fx-padding: 0 6px 0 0;
+    -fx-min-width: 40px;
+    -fx-pref-width: 40px;
+    -fx-max-width: 40px;
+    -fx-min-height: 40px;
+    -fx-pref-height: 40px;
+    -fx-max-height: 40px;
+    -fx-alignment: center;
+    -fx-padding: 0;
 }
 
 .custom-datepicker .arrow {
     -fx-shape: null;
     -fx-background-color: transparent;
+    -fx-background-image: url('icons/calendar-icon.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 22px 22px;
+    -fx-min-width: 22px;
+    -fx-pref-width: 22px;
+    -fx-max-width: 22px;
+    -fx-min-height: 22px;
+    -fx-pref-height: 22px;
+    -fx-max-height: 22px;
     -fx-padding: 0;
 }
 
@@ -1044,4 +1053,18 @@
 }
 .add-category-button:hover {
     -fx-background-color: #009955;
+}
+
+/* Ensure table text color stays white in all states */
+.table-view .table-cell {
+    -fx-text-fill: #ffffff;
+}
+.table-view .table-row-cell .text {
+    -fx-fill: #ffffff;
+}
+.table-view .table-row-cell:selected .text,
+.table-view .table-row-cell:focused .text,
+.table-view .table-row-cell:filled:selected .text,
+.table-view:focused .table-row-cell:selected .text {
+    -fx-fill: #ffffff;
 }
